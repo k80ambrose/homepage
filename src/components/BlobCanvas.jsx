@@ -20,8 +20,12 @@ export default function BlobCanvas() {
       class Orb {
         constructor() {
           this.pos = p.createVector(p.random(p.width), p.random(p.height))
-          this.angle = p.random(p.TWO_PI)
           this.speed = p.random(0.7, 1.7)
+          const startAngle = p.random(p.TWO_PI)
+          this.vel = p.createVector(
+            p.cos(startAngle) * this.speed,
+            p.sin(startAngle) * this.speed
+          )
           this.baseRadius = p.random(150, 320)
           // Higher noiseScale = more irregular/warped shape
           this.noiseScale = p.random(0.5, 1.1)
@@ -33,12 +37,20 @@ export default function BlobCanvas() {
         }
 
         move() {
-          this.angle += this.speed * 0.01
-          this.pos.x += p.cos(this.angle) * this.speed
-          this.pos.y += p.sin(this.angle) * this.speed
-          this.pos.x = (this.pos.x + p.width) % p.width
-          this.pos.y = (this.pos.y + p.height) % p.height
-          // Slowly morph the shape each frame
+          const margin = this.baseRadius + 60
+
+          // Soft boundary: push velocity back when approaching any edge
+          if (this.pos.x < margin)              this.vel.x += 0.2
+          if (this.pos.x > p.width  - margin)   this.vel.x -= 0.2
+          if (this.pos.y < margin)              this.vel.y += 0.2
+          if (this.pos.y > p.height - margin)   this.vel.y -= 0.2
+
+          // Small random wander so motion stays organic
+          this.vel.x += p.random(-0.08, 0.08)
+          this.vel.y += p.random(-0.08, 0.08)
+
+          this.vel.limit(this.speed)
+          this.pos.add(this.vel)
           this.noiseOffset += 0.005
         }
 
