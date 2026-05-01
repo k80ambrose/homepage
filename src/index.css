@@ -209,16 +209,17 @@ a:hover {
 .photo-gallery-page::before {
   content: '';
   position: absolute;
-  inset: -35vh 0 0;
+  inset: -45vh 0 -45vh;
   z-index: -1;
   background: linear-gradient(
     180deg,
     rgba(20, 20, 40, 0) 0%,
-    rgba(20, 20, 40, 0.42) 16vh,
-    rgba(20, 20, 40, 0.86) 34vh,
-    var(--blob-bg) 54vh,
-    var(--blob-bg) calc(100% - 34vh),
-    rgba(20, 20, 40, 0.86) calc(100% - 18vh),
+    rgba(20, 20, 40, 0.42) 18vh,
+    rgba(20, 20, 40, 0.86) 36vh,
+    var(--blob-bg) 56vh,
+    var(--blob-bg) calc(100% - 56vh),
+    rgba(20, 20, 40, 0.86) calc(100% - 36vh),
+    rgba(20, 20, 40, 0.42) calc(100% - 18vh),
     rgba(20, 20, 40, 0) 100%
   );
   pointer-events: none;
@@ -227,8 +228,7 @@ a:hover {
 .gallery-header {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: flex-start;
 }
 
 .gallery-header h1 {
@@ -238,19 +238,13 @@ a:hover {
   line-height: 0.95;
 }
 
-.gallery-count {
-  color: var(--muted);
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
 .flower-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(0.45rem, 1vw, 0.85rem);
   width: 100%;
-  max-width: 860px;
+  max-width: 1320px;
 }
 
 .flower-tile {
@@ -276,6 +270,42 @@ a:hover {
 .flower-tile:focus-visible img {
   transform: scale(1.05);
   opacity: 0.86;
+}
+
+.portrait-grid {
+  list-style: none;
+  column-count: 3;
+  column-gap: clamp(0.75rem, 1.4vw, 1.2rem);
+  width: 100%;
+  max-width: 1320px;
+}
+
+.portrait-grid li {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 1.4vw, 1.2rem);
+}
+
+.portrait-tile {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(240, 240, 238, 0.1);
+  background: rgba(240, 240, 238, 0.04);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.portrait-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.portrait-tile:hover img,
+.portrait-tile:focus-visible img {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 .photo-lightbox {
@@ -360,5 +390,9 @@ a:hover {
 
   .flower-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .portrait-grid {
+    column-count: 2;
   }
 }

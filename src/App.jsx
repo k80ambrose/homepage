@@ -9,7 +9,10 @@ import Photography from './components/Photography'
 function getPageFromHash() {
   if (window.location.hash === '#visualizations') return 'visualizations'
   if (window.location.hash === '#photography') return 'photography'
+  if (window.location.hash === '#portraits') return 'portraits'
+  if (window.location.hash === '#street-photography') return 'streetPhotography'
   if (window.location.hash === '#flora') return 'flora'
+  if (window.location.hash === '#fauna') return 'fauna'
   return 'home'
 }
 
@@ -23,7 +26,13 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (page !== 'photography' && page !== 'flora') return
+    if (
+      page !== 'photography' &&
+      page !== 'portraits' &&
+      page !== 'streetPhotography' &&
+      page !== 'flora' &&
+      page !== 'fauna'
+    ) return
 
     window.requestAnimationFrame(() => {
       const id = window.location.hash.slice(1)
@@ -44,7 +53,18 @@ export default function App() {
           <>
             <Hero />
             <Work />
-            {(page === 'photography' || page === 'flora') && <Photography showFlora={page === 'flora'} />}
+            {(page === 'photography' ||
+              page === 'portraits' ||
+              page === 'streetPhotography' ||
+              page === 'flora' ||
+              page === 'fauna') && (
+              <Photography
+                showPortraits={page === 'portraits'}
+                showStreetPhotography={page === 'streetPhotography'}
+                showFlora={page === 'flora'}
+                showFauna={page === 'fauna'}
+              />
+            )}
             <Connect />
           </>
         )}

@@ -17,18 +17,6 @@ const projects = [
     href: '#photography',
     year: 'Ongoing',
   },
-  {
-    title: 'Project Two',
-    description: 'Brief description of this project and the problem it solves.',
-    href: '#',
-    year: '2023',
-  },
-  {
-    title: 'Project Three',
-    description: 'Brief description of this project and the problem it solves.',
-    href: '#',
-    year: '2023',
-  },
 ]
 
 export default function Work() {
