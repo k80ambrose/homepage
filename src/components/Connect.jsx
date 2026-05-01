@@ -8,7 +8,7 @@ const links = [
 export default function Connect() {
   return (
     <section id="connect">
-      <h2 className="section-label">Connect</h2>
+      <h2 className="section-label">Let's Talk</h2>
       <ul className="connect-list">
         {links.map((l) => (
           <li key={l.label}>
