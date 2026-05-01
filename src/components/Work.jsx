@@ -2,7 +2,7 @@ const projects = [
   {
     title: 'The Choreography of Choice: Browsing Netflix as a Cultural Exercise',
     description: 'A user study examining how recommendation algorithms shape personal taste — and how our choices quietly shape them back.',
-    href: '#',
+    href: 'https://k80ambrose.github.io/howwebrowse/',
     year: '2024',
   },
   {
