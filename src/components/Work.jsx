@@ -1,7 +1,7 @@
 const projects = [
   {
-    title: 'Project One',
-    description: 'Brief description of this project and the problem it solves.',
+    title: 'The Choreography of Choice: Browsing Netflix as a Cultural Exercise',
+    description: 'A user study examining how recommendation algorithms shape personal taste — and how our choices quietly shape them back.',
     href: '#',
     year: '2024',
   },

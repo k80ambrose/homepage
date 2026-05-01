@@ -31,9 +31,24 @@ export default function BlobCanvas() {
           this.noiseScale = p.random(0.5, 1.1)
           this.noiseOffset = p.random(1000)
           this.numPoints = 10
-          this.r = p.random(100, 255)
-          this.g = p.random(50, 180)
-          this.b = p.random(150, 255)
+          const family = p.floor(p.random(4))
+          if (family === 0) {        // blue
+            this.r = p.random(0, 60)
+            this.g = p.random(80, 180)
+            this.b = p.random(180, 255)
+          } else if (family === 1) { // green
+            this.r = p.random(0, 80)
+            this.g = p.random(180, 255)
+            this.b = p.random(60, 160)
+          } else if (family === 2) { // yellow
+            this.r = p.random(200, 255)
+            this.g = p.random(200, 255)
+            this.b = p.random(0, 60)
+          } else {                   // orange
+            this.r = p.random(210, 255)
+            this.g = p.random(100, 170)
+            this.b = p.random(0, 40)
+          }
         }
 
         move() {

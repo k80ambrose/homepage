@@ -2,7 +2,7 @@
   --bg: #141420;
   --text: #f0f0ee;
   --muted: rgba(240, 240, 238, 0.55);
-  --accent: #c4a8f5;
+  --accent: #7dd9a8;
   --border: rgba(240, 240, 238, 0.12);
 }
 
@@ -19,7 +19,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.6;
   overflow-x: hidden;
@@ -78,12 +78,21 @@ a:hover {
 }
 
 .scroll-hint {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--muted);
-  opacity: 0.5;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  animation: chevron-bounce 2.2s ease-in-out infinite;
   margin-top: 3rem;
+  width: fit-content;
+}
+
+.scroll-hint--faded {
+  opacity: 0;
+}
+
+@keyframes chevron-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
 }
 
 /* ─── section label ──────────────────────────────────────── */
