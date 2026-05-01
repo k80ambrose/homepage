@@ -11,11 +11,17 @@ export default function BlobCanvas() {
       let orbs = []
       let outlineOpacity = 0
 
+      let scrollTicking = false
       handleScroll = () => {
-        const scrollTop = window.scrollY || 0
-        outlineOpacity = Math.min(scrollTop / 500, 1)
+        if (!scrollTicking) {
+          requestAnimationFrame(() => {
+            outlineOpacity = Math.min((window.scrollY || 0) / 500, 1)
+            scrollTicking = false
+          })
+          scrollTicking = true
+        }
       }
-      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleScroll, { passive: true })
 
       class Orb {
         constructor() {
