@@ -156,6 +156,43 @@ a:hover {
   line-height: 1.55;
 }
 
+/* ─── project pages ──────────────────────────────────────── */
+
+.project-page,
+.visualizations-page {
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.project-page h1,
+.visualizations-page h1 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.back-link {
+  width: fit-content;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.back-link::before {
+  content: '← ';
+}
+
+.page-intro {
+  color: var(--muted);
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  max-width: 42ch;
+}
+
+.project-page-list,
+.visualization-list {
+  margin-top: 2rem;
+}
+
 /* ─── connect ────────────────────────────────────────────── */
 
 .connect-list {

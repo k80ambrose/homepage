@@ -6,6 +6,18 @@ const projects = [
     year: '2024',
   },
   {
+    title: 'Visualizations',
+    description: 'A collection of interactive maps, charts, and visual experiments.',
+    href: '#visualizations',
+    year: 'Ongoing',
+  },
+  {
+    title: 'Photography',
+    description: 'Selected photography projects and visual work.',
+    href: '#photography',
+    year: 'Ongoing',
+  },
+  {
     title: 'Project Two',
     description: 'Brief description of this project and the problem it solves.',
     href: '#',
@@ -22,11 +34,16 @@ const projects = [
 export default function Work() {
   return (
     <section id="work">
-      <h2 className="section-label">Selected Work</h2>
+      <h2 className="section-label">Selected Projects</h2>
       <ul className="work-list">
         {projects.map((p) => (
           <li key={p.title} className="work-item">
-            <a href={p.href} target="_blank" rel="noreferrer" className="work-link">
+            <a
+              href={p.href}
+              target={p.href.startsWith('#') ? undefined : '_blank'}
+              rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
+              className="work-link"
+            >
               <span className="work-title">{p.title}</span>
               <span className="work-year">{p.year}</span>
             </a>
