@@ -6,9 +6,9 @@ const projects = [
     year: '2024',
   },
   {
-    title: 'Visualizations',
+    title: 'Creative Coding',
     description: 'A collection of interactive maps, charts, and visual experiments.',
-    href: '#visualizations',
+    href: '#creative-coding',
     year: 'Ongoing',
   },
   {

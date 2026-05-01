@@ -3,11 +3,11 @@ import BlobCanvas from './components/BlobCanvas'
 import Hero from './components/Hero'
 import Work from './components/Work'
 import Connect from './components/Connect'
-import Visualizations from './components/Visualizations'
+import CreativeCoding from './components/CreativeCoding'
 import Photography from './components/Photography'
 
 function getPageFromHash() {
-  if (window.location.hash === '#visualizations') return 'visualizations'
+  if (window.location.hash === '#creative-coding') return 'creativeCoding'
   if (window.location.hash === '#photography') return 'photography'
   if (window.location.hash === '#portraits') return 'portraits'
   if (window.location.hash === '#street-photography') return 'streetPhotography'
@@ -47,8 +47,8 @@ export default function App() {
     <>
       <BlobCanvas />
       <main>
-        {page === 'visualizations' ? (
-          <Visualizations />
+        {page === 'creativeCoding' ? (
+          <CreativeCoding />
         ) : (
           <>
             <Hero />
