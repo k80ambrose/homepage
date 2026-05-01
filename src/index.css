@@ -109,6 +109,28 @@ a:hover {
 
 /* ─── work ───────────────────────────────────────────────── */
 
+#work {
+  position: relative;
+  isolation: isolate;
+}
+
+#work::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(14, 14, 28, 0.15);
+  border-radius: 1rem;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent),
+              linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent),
+                      linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
 .work-list {
   list-style: none;
   display: flex;
