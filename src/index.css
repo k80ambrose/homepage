@@ -1,5 +1,6 @@
 :root {
   --bg: #141420;
+  --blob-bg: rgb(20, 20, 40);
   --text: #f0f0ee;
   --muted: rgba(240, 240, 238, 0.55);
   --accent: #7dd9a8;
@@ -193,6 +194,121 @@ a:hover {
   margin-top: 2rem;
 }
 
+/* ─── photography ───────────────────────────────────────── */
+
+.photo-gallery-page {
+  min-height: 100svh;
+  max-width: none;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 12vh 4vw 8vh;
+  position: relative;
+  isolation: isolate;
+}
+
+.photo-gallery-page::before {
+  content: '';
+  position: absolute;
+  inset: -35vh 0 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 40, 0) 0%,
+    rgba(20, 20, 40, 0.42) 16vh,
+    rgba(20, 20, 40, 0.86) 34vh,
+    var(--blob-bg) 54vh,
+    var(--blob-bg) calc(100% - 34vh),
+    rgba(20, 20, 40, 0.86) calc(100% - 18vh),
+    rgba(20, 20, 40, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.gallery-header h1 {
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.gallery-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.flower-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(0.45rem, 1vw, 0.85rem);
+  width: 100%;
+  max-width: 860px;
+}
+
+.flower-tile {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(240, 240, 238, 0.1);
+  background: rgba(240, 240, 238, 0.04);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.flower-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.flower-tile:hover img,
+.flower-tile:focus-visible img {
+  transform: scale(1.05);
+  opacity: 0.86;
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 5vw;
+  background: rgba(20, 20, 32, 0.94);
+}
+
+.photo-lightbox img {
+  display: block;
+  max-width: min(82vw, 900px);
+  max-height: 82vh;
+  object-fit: contain;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 1px solid rgba(240, 240, 238, 0.18);
+  color: var(--text);
+  background: rgba(20, 20, 32, 0.86);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+}
+
 /* ─── connect ────────────────────────────────────────────── */
 
 .connect-list {
@@ -229,5 +345,20 @@ a:hover {
   .work-year {
     order: -1;
     font-size: 0.75rem;
+  }
+
+  .photo-gallery-page {
+    justify-content: flex-start;
+    padding: 7vh 5vw;
+  }
+
+  .gallery-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .flower-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

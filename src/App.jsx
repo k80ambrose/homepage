@@ -9,6 +9,7 @@ import Photography from './components/Photography'
 function getPageFromHash() {
   if (window.location.hash === '#visualizations') return 'visualizations'
   if (window.location.hash === '#photography') return 'photography'
+  if (window.location.hash === '#flora') return 'flora'
   return 'home'
 }
 
@@ -21,18 +22,29 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
+  useEffect(() => {
+    if (page !== 'photography' && page !== 'flora') return
+
+    window.requestAnimationFrame(() => {
+      const id = window.location.hash.slice(1)
+      const target = document.getElementById(id)
+      if (target) {
+        target.scrollIntoView({ block: 'start' })
+      }
+    })
+  }, [page])
+
   return (
     <>
       <BlobCanvas />
       <main>
         {page === 'visualizations' ? (
           <Visualizations />
-        ) : page === 'photography' ? (
-          <Photography />
         ) : (
           <>
             <Hero />
             <Work />
+            {(page === 'photography' || page === 'flora') && <Photography showFlora={page === 'flora'} />}
             <Connect />
           </>
         )}
