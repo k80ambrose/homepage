@@ -232,7 +232,7 @@ a:hover {
   max-width: none;
   justify-content: center;
   gap: 1.5rem;
-  padding: 12vh 4vw 8vh;
+  padding: 12vh 4vw 20vh;
   position: relative;
   isolation: isolate;
 }
@@ -240,14 +240,18 @@ a:hover {
 .photo-gallery-page::before {
   content: '';
   position: absolute;
-  inset: -45vh 0 0;
+  inset: -45vh 0 -45vh;
   z-index: -1;
   background: linear-gradient(
     180deg,
     rgba(20, 20, 40, 0) 0%,
     rgba(20, 20, 40, 0.42) 18vh,
     rgba(20, 20, 40, 0.86) 36vh,
-    var(--blob-bg) 56vh
+    var(--blob-bg) 56vh,
+    var(--blob-bg) calc(100% - 56vh),
+    rgba(20, 20, 40, 0.86) calc(100% - 36vh),
+    rgba(20, 20, 40, 0.42) calc(100% - 18vh),
+    rgba(20, 20, 40, 0) 100%
   );
   pointer-events: none;
 }
