@@ -13,6 +13,7 @@ function getPageFromHash() {
   if (window.location.hash === '#street-photography') return 'streetPhotography'
   if (window.location.hash === '#flora') return 'flora'
   if (window.location.hash === '#fauna') return 'fauna'
+  if (window.location.hash === '#textures') return 'textures'
   return 'home'
 }
 
@@ -31,7 +32,8 @@ export default function App() {
       page !== 'portraits' &&
       page !== 'streetPhotography' &&
       page !== 'flora' &&
-      page !== 'fauna'
+      page !== 'fauna' &&
+      page !== 'textures'
     ) return
 
     window.requestAnimationFrame(() => {
@@ -57,12 +59,14 @@ export default function App() {
               page === 'portraits' ||
               page === 'streetPhotography' ||
               page === 'flora' ||
-              page === 'fauna') && (
+              page === 'fauna' ||
+              page === 'textures') && (
               <Photography
                 showPortraits={page === 'portraits'}
                 showStreetPhotography={page === 'streetPhotography'}
                 showFlora={page === 'flora'}
                 showFauna={page === 'fauna'}
+                showTextures={page === 'textures'}
               />
             )}
             <Connect />

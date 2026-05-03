@@ -114,12 +114,16 @@ a:hover {
 
 /* ─── work ───────────────────────────────────────────────── */
 
-#work {
+#work,
+#photography,
+.visualizations-page {
   position: relative;
   isolation: isolate;
 }
 
-#work::before {
+#work::before,
+#photography::before,
+.visualizations-page::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -236,18 +240,14 @@ a:hover {
 .photo-gallery-page::before {
   content: '';
   position: absolute;
-  inset: -45vh 0 -45vh;
+  inset: -45vh 0 0;
   z-index: -1;
   background: linear-gradient(
     180deg,
     rgba(20, 20, 40, 0) 0%,
     rgba(20, 20, 40, 0.42) 18vh,
     rgba(20, 20, 40, 0.86) 36vh,
-    var(--blob-bg) 56vh,
-    var(--blob-bg) calc(100% - 56vh),
-    rgba(20, 20, 40, 0.86) calc(100% - 36vh),
-    rgba(20, 20, 40, 0.42) calc(100% - 18vh),
-    rgba(20, 20, 40, 0) 100%
+    var(--blob-bg) 56vh
   );
   pointer-events: none;
 }

@@ -80,6 +80,22 @@ const faunaImages = Object.entries(
   })
   .sort((a, b) => a.filename.localeCompare(b.filename))
 
+const textureImages = Object.entries(
+  import.meta.glob('../../photography/Textures/*.{jpg,jpeg,JPG,JPEG}', {
+    eager: true,
+    as: 'url',
+  })
+)
+  .map(([path, src]) => {
+    const filename = path.split('/').pop()
+    return {
+      src,
+      filename,
+      title: filename.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '),
+    }
+  })
+  .sort((a, b) => a.filename.localeCompare(b.filename))
+
 const collections = [
   {
     title: 'Flora',
@@ -98,7 +114,7 @@ const collections = [
   },
   {
     title: 'Textures',
-    href: '#',
+    href: '#textures',
     year: 'Collection',
   },
   {
@@ -215,14 +231,12 @@ export default function Photography({
   showStreetPhotography = false,
   showFlora = false,
   showFauna = false,
+  showTextures = false,
 }) {
   return (
     <>
       <section id="photography" className="project-page photography-page">
         <h1>Photography</h1>
-        <p className="page-intro">
-          Selected collections of portraits, street photography, textures, flora, and fauna.
-        </p>
 
         <ul className="work-list project-page-list">
           {collections.map((collection) => (
@@ -254,6 +268,14 @@ export default function Photography({
           title="Street Photography"
           photos={streetPhotographyImages}
           ariaName="street photo"
+        />
+      )}
+      {showTextures && (
+        <NaturalPhotoGallery
+          id="textures"
+          title="Textures"
+          photos={textureImages}
+          ariaName="texture"
         />
       )}
       {showFlora && <FlowerGallery />}
