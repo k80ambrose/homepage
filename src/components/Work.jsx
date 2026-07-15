@@ -5,12 +5,13 @@ const projects = [
     href: 'https://k80ambrose.github.io/howwebrowse/',
     year: '2024',
   },
-  {
-    title: 'Creative Coding',
-    description: 'A collection of interactive maps, charts, and visual experiments.',
-    href: '#creative-coding',
-    year: 'Ongoing',
-  },
+  // Temporarily hidden — restore this entry to bring back the Creative Coding section
+  // {
+  //   title: 'Creative Coding',
+  //   description: 'A collection of interactive maps, charts, and visual experiments.',
+  //   href: '#creative-coding',
+  //   year: 'Ongoing',
+  // },
   {
     title: 'Photography',
     description: 'Selected photography projects and visual work.',

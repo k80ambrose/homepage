@@ -7,7 +7,8 @@ import CreativeCoding from './components/CreativeCoding'
 import Photography from './components/Photography'
 
 function getPageFromHash() {
-  if (window.location.hash === '#creative-coding') return 'creativeCoding'
+  // Temporarily hidden — restore this line to bring back the Creative Coding section
+  // if (window.location.hash === '#creative-coding') return 'creativeCoding'
   if (window.location.hash === '#photography') return 'photography'
   if (window.location.hash === '#portraits') return 'portraits'
   if (window.location.hash === '#street-photography') return 'streetPhotography'
